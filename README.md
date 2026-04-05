@@ -78,7 +78,7 @@ npm run dev
 
 ---
 
-## تەکنەلۆژیاکا بەکارهاتووەکان
+## تەکنەلۆژیا بەکارهاتووەکان
 
 - React + Vite
 - MediaPipe FaceMesh (`@mediapipe/tasks-vision`) بۆ دۆزینەوەی ٤٧٨ خاڵی نیشانەکەری ڕووخسار
