@@ -20,10 +20,12 @@ function App() {
   useEffect(() => {
     const init = async () => {
       try {
-        const vision = await FilesetResolver.forVisionTasks('/wasm');
+        const baseUrl = import.meta.env.BASE_URL;
+        
+        const vision = await FilesetResolver.forVisionTasks(`${baseUrl}wasm`);
         landmarkerRef.current = await FaceLandmarker.createFromOptions(vision, {
           baseOptions: {
-            modelAssetPath: '/models/face_landmarker.task',
+            modelAssetPath: `${baseUrl}models/face_landmarker.task`,
             delegate: 'GPU'
           },
           outputFaceBlendshapes: false,
@@ -31,8 +33,8 @@ function App() {
           numFaces: 1
         });
 
-        await faceapi.nets.tinyFaceDetector.loadFromUri('/models');
-        await faceapi.nets.faceExpressionNet.loadFromUri('/models');
+        await faceapi.nets.tinyFaceDetector.loadFromUri(`${baseUrl}models`);
+        await faceapi.nets.faceExpressionNet.loadFromUri(`${baseUrl}models`);
 
         setLoading(false);
       } catch (err) {
